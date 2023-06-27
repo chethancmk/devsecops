@@ -28,7 +28,7 @@ jobs:
   container-image-scan:
     needs: docker
     name: Scan docker image
-    uses: ./.github/workflows/container-image-scan.yml
+    uses: ./.github/workflows/container-scan.yml
     secrets: inherit
     with:
       image-tag: ${{ needs.docker.outputs.image-tag }}
