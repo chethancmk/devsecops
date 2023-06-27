@@ -20,7 +20,7 @@ jobs:
     secrets: inherit
     
   docker:
-    needs: build
+    needs: sast
     name: Build docker image
     uses: ./.github/workflows/docker.yml
     secrets: inherit
