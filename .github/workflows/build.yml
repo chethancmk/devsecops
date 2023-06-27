@@ -10,9 +10,7 @@ jobs:
     # required to fix an issue we had when test results failed because
     # checks: write and pull-requests: write were needed
     permissions:
-      contents: read
-      security-events: write
-      
+      contents: read      
     # runner
     runs-on: ubuntu-latest
     steps:
