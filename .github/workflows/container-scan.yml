@@ -6,6 +6,7 @@ on:
         type: string
         description: 'The name of the docker image to scan'
         required: true
+permissions: read-all
 
   workflow_call:
     inputs:
