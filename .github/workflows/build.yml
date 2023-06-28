@@ -3,15 +3,13 @@ name: 10 Build pipeline
 on:
   workflow_dispatch:
   workflow_call:
-permissions: read-all
 
 jobs:
-  #name of job, free choice, could also give a name
+  #name of job, free choice, could also give a name  
   build:
     # required to fix an issue we had when test results failed because
     # checks: write and pull-requests: write were needed
-    permissions:
-      contents: read      
+    permissions: read-all       
     # runner
     runs-on: ubuntu-latest
     steps:
