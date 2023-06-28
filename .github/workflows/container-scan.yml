@@ -6,14 +6,14 @@ on:
         type: string
         description: 'The name of the docker image to scan'
         required: true
-permissions: read-all
-
+        
   workflow_call:
     inputs:
       image-tag:
         type: string
         description: 'The name of the docker image to scan'
         required: true
+permissions: read-all
 env:
   REGISTRY: ghcr.io
   IMAGE_TAG: ${{ inputs.image-tag || github.event.inputs.image-tag }}
