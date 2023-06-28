@@ -3,6 +3,7 @@ name: 10 Build pipeline
 on:
   workflow_dispatch:
   workflow_call:
+permissions: read-all
 
 jobs:
   #name of job, free choice, could also give a name
