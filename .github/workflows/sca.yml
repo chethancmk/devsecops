@@ -23,8 +23,9 @@ jobs:
         run: echo running on branch ${GITHUB_REF##*/}        
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v3
+        if: ${{ github.event_name == 'pull_request' }}
         with:
           fail-on-severity: high
-          vulnerability-check: true
-          head_ref: ${GITHUB_REF##*/} 
+          vulnerability-check: true          
           base_ref: ${GITHUB_REF##*/} 
+          head_ref: ${GITHUB_REF##*/} 
