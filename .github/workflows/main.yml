@@ -10,31 +10,36 @@ on:
 jobs:
 
   sca:
-    name: SCA
+    name: Dependency-Scan
     uses: ./.github/workflows/sca.yml
     
   build:
     needs: sca
-    name: Build
+    name: Build-Artifact
     uses: ./.github/workflows/build.yml
     secrets: inherit #https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idsecretsinherit
    
   sast:
     needs: build
-    name: SAST
+    name: SAST-Scan
     uses: ./.github/workflows/sast.yml
     secrets: inherit
     
   docker:
     needs: sast
-    name: Build docker image
+    name: Build-Image
     uses: ./.github/workflows/docker.yml
     secrets: inherit
     
   container-image-scan:
     needs: docker
-    name: Scan docker image
+    name: Image-Scan
     uses: ./.github/workflows/container-scan.yml
     secrets: inherit
     with:
       image-tag: ${{ needs.docker.outputs.image-tag }}
+  
+  image-attestation:
+    needs:   container-image-scan
+    name: Sign-Push      
+    uses: ./.github/workflows/docker.yml
