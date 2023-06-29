@@ -26,6 +26,4 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         with:
           fail-on-severity: high
-          vulnerability-check: true          
-          base_ref: ${GITHUB_REF##*/} 
-          head_ref: ${GITHUB_REF##*/} 
+          vulnerability-check: true
