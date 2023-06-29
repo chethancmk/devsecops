@@ -15,10 +15,6 @@ jobs:
 
     strategy:
       fail-fast: false
-      matrix:
-        language: [ 'java' ]
-        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
-        # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
 
     steps:
       - name: 'Checkout Repository'
@@ -26,5 +22,5 @@ jobs:
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v3
         with:
-          fail-on-severity: High
+          fail-on-severity: high
           vulnerability-check: true
