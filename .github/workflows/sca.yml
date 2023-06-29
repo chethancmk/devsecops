@@ -19,8 +19,11 @@ jobs:
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
+      - name: Branch name
+        run: echo running on branch ${GITHUB_REF##*/}        
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v3
         with:
           fail-on-severity: high
           vulnerability-check: true
+          base-ref/head-ref: ${GITHUB_REF##*/} 
