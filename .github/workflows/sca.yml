@@ -26,4 +26,5 @@ jobs:
         with:
           fail-on-severity: high
           vulnerability-check: true
+          head_ref: ${GITHUB_REF##*/} 
           base_ref: ${GITHUB_REF##*/} 
