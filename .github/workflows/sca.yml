@@ -1,0 +1,30 @@
+name: 15 SCA
+
+on:
+  workflow_dispatch:
+  workflow_call:
+permissions:
+  contents: read
+
+jobs:
+  sca-dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'java' ]
+        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
+        # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
+
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v3
+        with:
+          fail-on-severity: High
+          vulnerability-check: true
