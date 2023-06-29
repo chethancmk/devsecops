@@ -20,7 +20,7 @@ env:
 
 jobs:
   container-image-scan:
-    name: Container Image Scan
+    name: Prisma Scan
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
